@@ -58,8 +58,8 @@ class Wave:
         plt.ylabel("Amplitude (0 to 255)")
         plt.show()
 
-
-        image = mpld3.fig_to_html(fig)
+        # To write
+        image = ""
         return image
 
 
