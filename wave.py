@@ -2,6 +2,9 @@ import math
 import pyaudio
 import matplotlib.pyplot as plt
 
+import numpy as np
+from PIL import Image
+
 # WAVE PARAMETERS
 DEFAULT_BIT_RATE = 16000
 DEFAULT_FREQUENCY = 800
@@ -49,11 +52,16 @@ class Wave:
 
         # Plot the waveform
         plt.figure(figsize=(18, 4))
-        plt.plot(wave_values, color='blue')
+        fig = plt.plot(wave_values, color='blue')
         plt.title("Waveform Visualization of WAVEDATA")
         plt.xlabel("Sample Index")
         plt.ylabel("Amplitude (0 to 255)")
         plt.show()
+
+
+        image = mpld3.fig_to_html(fig)
+        return image
+
 
 # CREATE A SIGNAL
 def generate_wave(freq, bit_rate, sample_length, fill=False):
