@@ -1,3 +1,4 @@
 .idea/Morse_code_converter.iml
 .idea/misc.xml
-__pycache__/wave.cpython-311.pyc
+__pycache__/*
+
