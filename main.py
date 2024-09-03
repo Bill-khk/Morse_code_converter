@@ -5,7 +5,7 @@ from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-import mpld3
+import pyperclip
 
 SECRET_KEY = "KEY"
 
@@ -29,7 +29,9 @@ def home():
         global WAVEDATA
         converted_text = morse.word_to_morse(form.Text.data)
         WAVEDATA.morse_to_signal(converted_text)
-        return render_template('home.html', form=form, result=converted_text, WAVEDATA=WAVEDATA)
+        image = WAVEDATA.show_sound()
+        pyperclip.copy(image)
+        return render_template('home.html', form=form, result=converted_text, WAVEDATA=WAVEDATA, image=image)
     return render_template('home.html', form=form)
 
 @app.route('/generate_audio', methods=['GET', 'POST'])

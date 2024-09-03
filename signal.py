@@ -5,6 +5,7 @@ import matplotlib.figure
 import mpld3
 from io import StringIO, BytesIO
 import wave
+import pyperclip
 
 import numpy as np
 from PIL import Image
@@ -59,16 +60,17 @@ class Signal:
         # Convert signalDATA to numerical values
         signal_values = [ord(char) for char in self.Value]
 
-        # Plot the signalform
-        plt.figure(figsize=(18, 4))
-        fig = plt.plot(signal_values, color='blue')
+        # Plot the signal form
+        fig = plt.figure(figsize=(12, 4))
+        plt.plot(signal_values, color='blue')
         plt.title("signalform Visualization of signalDATA")
         plt.xlabel("Sample Index")
         plt.ylabel("Amplitude (0 to 255)")
+        plt.margins(x=0, y=0)
 
-        # To write
-        fig.set_canvas()
+        # convert a figure to an html string using mpld3
         image = mpld3.fig_to_html(fig)
+        pyperclip.copy(image)
         return image
 
 
