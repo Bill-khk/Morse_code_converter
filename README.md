@@ -1,6 +1,6 @@
 ![MorseConverter](https://github.com/user-attachments/assets/8ea02180-9161-4aa7-aef1-547547fb21e9)
 
-Converting a string into an Morse audio and code
+Converting a string into an Morse audio and code :
 
 Morse.csv contain the morse correspondance
 Morse.py manage the conversion into morse
